@@ -1,4 +1,4 @@
-package co.com.gsdd.guiutil;
+package co.com.gsdd.gui.util;
 
 import java.util.List;
 

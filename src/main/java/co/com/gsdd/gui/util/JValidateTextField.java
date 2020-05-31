@@ -1,4 +1,4 @@
-package co.com.gsdd.guiutil;
+package co.com.gsdd.gui.util;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -12,8 +12,8 @@ import javax.swing.border.Border;
 
 public class JValidateTextField extends JTextField {
 
-	private static final long serialVersionUID = 735926332748734356L;
-	private Pattern pattern;
+    private static final long serialVersionUID = 735926332748734356L;
+    private Pattern pattern;
     private Integer maxSize;
     private Border wrongBorder = BorderFactory.createLineBorder(Color.RED);
     private Border defaultBorder;
