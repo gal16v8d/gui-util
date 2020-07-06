@@ -17,7 +17,7 @@ public class JValidateTextField extends JTextField {
     private Integer maxSize;
     private Border wrongBorder = BorderFactory.createLineBorder(Color.RED);
     private Border defaultBorder;
-    private Boolean isValid;
+    private boolean isValid;
 
     public JValidateTextField() {
         super();
@@ -77,22 +77,24 @@ public class JValidateTextField extends JTextField {
         this.pattern = Pattern.compile(regEx);
     }
 
-    private Boolean validateText(KeyEvent e) {
-        Boolean r = Boolean.TRUE;
+    private boolean validateText(KeyEvent e) {
+        boolean r = true;
         if (pattern != null) {
             Matcher matcher = pattern.matcher(this.getText().trim());
             if (!matcher.matches()) {
                 wrongAction(e);
-                r = Boolean.FALSE;
+                r = false;
             }
         }
 
-        if (this.getText().trim().length() > this.maxSize) {
-            wrongAction(e);
-            r = Boolean.FALSE;
-        } else {
-            this.setBorder(defaultBorder);
-            r = Boolean.TRUE;
+        if (r) {
+            if (this.getText().trim().length() > this.maxSize) {
+                wrongAction(e);
+                r = false;
+            } else {
+                this.setBorder(defaultBorder);
+                r = true;
+            }
         }
         return r;
     }
@@ -115,11 +117,11 @@ public class JValidateTextField extends JTextField {
         this.setBorder(defaultBorder);
     }
 
-    public Boolean getIsValid() {
+    public boolean isValid() {
         return isValid;
     }
 
-    public void setIsValid(Boolean isValid) {
+    public void setValid(boolean isValid) {
         this.isValid = isValid;
     }
 

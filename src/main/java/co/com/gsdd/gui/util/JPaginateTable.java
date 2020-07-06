@@ -33,6 +33,7 @@ public class JPaginateTable extends JTable {
     private static final int BUTTON_HEIGHT = 20;
     private static final int BUTTON_WIDTH = 50;
     private static final int ACTION_MAP_KEY = 0;
+    private static final int ITEMS_PER_PAGE_DEF = 10;
     private static final String PAG_FORMAT = "/ %d";
     private static final String ARROW_FIRST = "|<";
     private static final String ARROW_PREV = "<";
@@ -49,7 +50,7 @@ public class JPaginateTable extends JTable {
     private final JTextField fieldTop;
     private int currentPageIndex = 1;
     private int maxPageIndex = 1;
-    private int itemsPerPage = 10;
+    private int itemsPerPage = ITEMS_PER_PAGE_DEF;
 
     public JPaginateTable() {
         tableScroll = new JScrollPane();
@@ -76,7 +77,7 @@ public class JPaginateTable extends JTable {
         return component;
     }
 
-    public void setProperties() {
+    private final void setProperties() {
         this.setAutoCreateRowSorter(true);
         this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         this.setGridColor(new java.awt.Color(0, 0, 0));
@@ -84,7 +85,6 @@ public class JPaginateTable extends JTable {
         this.setSelectionBackground(SystemColor.textHighlight);
         this.setSelectionForeground(SystemColor.inactiveCaptionBorder);
         tableScroll.setViewportView(this);
-        // tableScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         setListeners();
         tableFirst.setText(ARROW_FIRST);
         tablePrev.setText(ARROW_PREV);
@@ -124,19 +124,19 @@ public class JPaginateTable extends JTable {
                 initFilterAndButton(paginateSorter, itemsPerPage);
             }
         };
-        ActionListener alFirst = e -> {
+        ActionListener alFirst = (ActionEvent e) -> {
             currentPageIndex = 1;
             initFilterAndButton(paginateSorter, itemsPerPage);
         };
-        ActionListener alPrev = e -> {
+        ActionListener alPrev = (ActionEvent e) -> {
             currentPageIndex -= 1;
             initFilterAndButton(paginateSorter, itemsPerPage);
         };
-        ActionListener alNext = e -> {
+        ActionListener alNext = (ActionEvent e) -> {
             currentPageIndex += 1;
             initFilterAndButton(paginateSorter, itemsPerPage);
         };
-        ActionListener alLast = e -> {
+        ActionListener alLast = (ActionEvent e) -> {
             currentPageIndex = maxPageIndex;
             initFilterAndButton(paginateSorter, itemsPerPage);
         };

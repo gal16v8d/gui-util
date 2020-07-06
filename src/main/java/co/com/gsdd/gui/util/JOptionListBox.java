@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 public class JOptionListBox {
 
     private List<String> input;
-    private String output;
     private String title;
     private String value;
 
@@ -22,25 +21,24 @@ public class JOptionListBox {
     }
 
     public String getSelectedValue() {
-        String p = null;
+        String output = null;
         try {
             if (input != null && !input.isEmpty()) {
                 String[] choices = input.toArray(new String[input.size()]);
                 if (choices.length > 0) {
                     String criteria = value + GralConstants.COLON;
-                    this.output = (String) JOptionPane.showInputDialog(null, criteria, title,
-                            JOptionPane.QUESTION_MESSAGE, null, // Use
-                                                                // default
-                                                                // icon
+                    output = (String) JOptionPane.showInputDialog(null, criteria, title, JOptionPane.QUESTION_MESSAGE,
+                            null, // Use
+                                  // default
+                                  // icon
                             choices, // Array of choices
                             choices[0]); // Initial choice
-                    return output;
                 }
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
-        return p;
+        return output;
     }
 
 }
