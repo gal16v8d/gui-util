@@ -1,4 +1,4 @@
-package co.com.gsdd.constants;
+package com.gsdd.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class GUIConstants {
 
-    public static final String ERROR = "Error";
-    public static final String SUCCESS = "Success";
+  public static final String ERROR = "Error";
+  public static final String SUCCESS = "Success";
 
 }
