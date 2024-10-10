@@ -21,6 +21,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -46,12 +47,14 @@ public class JPaginateTable extends JTable {
   private final JButton tablePrev;
   private final JButton tableNext;
   private final JButton tableLast;
+  @Setter
   private TableRowSorter<TableModel> paginateSorter;
   private final JTextField field;
   private final JTextField fieldTop;
   private int currentPageIndex = 1;
   private int maxPageIndex = 1;
-  private final int itemsPerPage = ITEMS_PER_PAGE_DEF;
+  @Setter
+  private int itemsPerPage = ITEMS_PER_PAGE_DEF;
 
   public JPaginateTable() {
     tableScroll = new JScrollPane();
@@ -210,13 +213,6 @@ public class JPaginateTable extends JTable {
    */
   public Integer getPaginationSize() {
     return tableScroll.getViewport().getViewRect().height;
-  }
-
-  /**
-   * @param sorter the sorter to set
-   */
-  public void setPaginateSorter(TableRowSorter<TableModel> sorter) {
-    this.paginateSorter = sorter;
   }
 
   /**
