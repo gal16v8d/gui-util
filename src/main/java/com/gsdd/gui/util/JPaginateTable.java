@@ -6,6 +6,7 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.Serial;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -19,12 +20,14 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Getter
 public class JPaginateTable extends JTable {
 
-  private static final long serialVersionUID = -2905053270333371347L;
+  @Serial private static final long serialVersionUID = -2905053270333371347L;
 
   private static final int BUTTON_FACTOR = 2;
   private static final int BUTTON_SPACE = 10;
@@ -48,7 +51,7 @@ public class JPaginateTable extends JTable {
   private final JTextField fieldTop;
   private int currentPageIndex = 1;
   private int maxPageIndex = 1;
-  private int itemsPerPage = ITEMS_PER_PAGE_DEF;
+  private final int itemsPerPage = ITEMS_PER_PAGE_DEF;
 
   public JPaginateTable() {
     tableScroll = new JScrollPane();
@@ -88,14 +91,13 @@ public class JPaginateTable extends JTable {
     tableLast.setText(ARROW_LAST);
   }
 
-  @SuppressWarnings({"serial", "rawtypes", "unchecked"})
+  @SuppressWarnings({"rawtypes"})
   public void setTableModel(String[] columnNames, Class[] types) {
-    final Class[] tipos = types;
     this.setModel(
         new DefaultTableModel(new Object[][] {}, columnNames) {
           @Override
           public Class getColumnClass(int columnIndex) {
-            return tipos[columnIndex];
+            return types[columnIndex];
           }
 
           @Override
@@ -105,7 +107,6 @@ public class JPaginateTable extends JTable {
         });
   }
 
-  @SuppressWarnings("serial")
   public void setListeners() {
     AbstractAction alValue =
         new AbstractAction() {
@@ -212,34 +213,6 @@ public class JPaginateTable extends JTable {
   }
 
   /**
-   * @return the tableScroll
-   */
-  public JScrollPane getTableScroll() {
-    return tableScroll;
-  }
-
-  /**
-   * @return the tablePrev
-   */
-  public JButton getTablePrev() {
-    return tablePrev;
-  }
-
-  /**
-   * @return the tableNext
-   */
-  public JButton getTableNext() {
-    return tableNext;
-  }
-
-  /**
-   * @return the sorter
-   */
-  public TableRowSorter<TableModel> getPaginateSorter() {
-    return paginateSorter;
-  }
-
-  /**
    * @param sorter the sorter to set
    */
   public void setPaginateSorter(TableRowSorter<TableModel> sorter) {
@@ -247,44 +220,9 @@ public class JPaginateTable extends JTable {
   }
 
   /**
-   * @return the tableFirst
-   */
-  public JButton getTableFirst() {
-    return tableFirst;
-  }
-
-  /**
-   * @return the tableLast
-   */
-  public JButton getTableLast() {
-    return tableLast;
-  }
-
-  /**
-   * @return the field
-   */
-  public JTextField getField() {
-    return field;
-  }
-
-  /**
    * @return the label
    */
   public JTextField getLabel() {
     return fieldTop;
-  }
-
-  /**
-   * @return the itemsPerPage
-   */
-  public int getItemsPerPage() {
-    return itemsPerPage;
-  }
-
-  /**
-   * @param itemsPerPage the itemsPerPage to set
-   */
-  public void setItemsPerPage(int itemsPerPage) {
-    this.itemsPerPage = itemsPerPage;
   }
 }

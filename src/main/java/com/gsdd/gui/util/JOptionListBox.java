@@ -3,20 +3,16 @@ package com.gsdd.gui.util;
 import com.gsdd.constants.GralConstants;
 import java.util.List;
 import javax.swing.JOptionPane;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RequiredArgsConstructor
 public class JOptionListBox {
 
-  private List<String> input;
-  private String title;
-  private String value;
-
-  public JOptionListBox(List<String> input, String title, String value) {
-    this.input = input;
-    this.title = title;
-    this.value = value;
-  }
+  private final List<String> input;
+  private final String title;
+  private final String value;
 
   public String getSelectedValue() {
     String output = null;

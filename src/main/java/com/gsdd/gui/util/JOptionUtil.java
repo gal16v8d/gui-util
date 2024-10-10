@@ -1,10 +1,9 @@
 package com.gsdd.gui.util;
 
 import javax.swing.JOptionPane;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public final class JOptionUtil {
 
   public static void showAppMessage(String title, Object msg, int messageType) {

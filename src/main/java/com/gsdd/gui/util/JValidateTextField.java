@@ -3,6 +3,7 @@ package com.gsdd.gui.util;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.Serial;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
@@ -11,7 +12,7 @@ import javax.swing.border.Border;
 
 public class JValidateTextField extends JTextField {
 
-  private static final long serialVersionUID = 735926332748734356L;
+  @Serial private static final long serialVersionUID = 735926332748734356L;
   private Pattern pattern;
   private Integer maxSize;
   private Border wrongBorder = BorderFactory.createLineBorder(Color.RED);
