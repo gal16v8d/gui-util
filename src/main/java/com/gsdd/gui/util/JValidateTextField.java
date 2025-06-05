@@ -13,10 +13,11 @@ import javax.swing.border.Border;
 public class JValidateTextField extends JTextField {
 
   @Serial private static final long serialVersionUID = 735926332748734356L;
+
+  private final Border wrongBorder = BorderFactory.createLineBorder(Color.RED);
+  private final Border defaultBorder;
   private Pattern pattern;
   private Integer maxSize;
-  private Border wrongBorder = BorderFactory.createLineBorder(Color.RED);
-  private Border defaultBorder;
   private boolean isValid;
 
   public JValidateTextField() {
@@ -90,7 +91,6 @@ public class JValidateTextField extends JTextField {
         r = false;
       } else {
         this.setBorder(defaultBorder);
-        r = true;
       }
     }
     return r;

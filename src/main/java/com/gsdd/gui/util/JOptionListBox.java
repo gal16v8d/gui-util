@@ -18,22 +18,20 @@ public class JOptionListBox {
     String output = null;
     try {
       if (input != null && !input.isEmpty()) {
-        String[] choices = input.toArray(new String[input.size()]);
-        if (choices.length > 0) {
-          String criteria = value + GralConstants.COLON;
-          output =
-              (String)
-                  JOptionPane.showInputDialog(
-                      null,
-                      criteria,
-                      title,
-                      JOptionPane.QUESTION_MESSAGE,
-                      null, // Use
-                      // default
-                      // icon
-                      choices, // Array of choices
-                      choices[0]); // Initial choice
-        }
+        String[] choices = input.toArray(new String[0]);
+        String criteria = value + GralConstants.COLON;
+        output =
+            (String)
+                JOptionPane.showInputDialog(
+                    null,
+                    criteria,
+                    title,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, // Use
+                    // default
+                    // icon
+                    choices, // Array of choices
+                    choices[0]); // Initial choice
       }
     } catch (Exception e) {
       log.error(e.getMessage(), e);

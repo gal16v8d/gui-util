@@ -47,14 +47,12 @@ public class JPaginateTable extends JTable {
   private final JButton tablePrev;
   private final JButton tableNext;
   private final JButton tableLast;
-  @Setter
-  private TableRowSorter<TableModel> paginateSorter;
+  @Setter private TableRowSorter<TableModel> paginateSorter;
   private final JTextField field;
   private final JTextField fieldTop;
   private int currentPageIndex = 1;
   private int maxPageIndex = 1;
-  @Setter
-  private int itemsPerPage = ITEMS_PER_PAGE_DEF;
+  @Setter private int itemsPerPage = ITEMS_PER_PAGE_DEF;
 
   public JPaginateTable() {
     tableScroll = new JScrollPane();
@@ -79,7 +77,7 @@ public class JPaginateTable extends JTable {
     return component;
   }
 
-  private final void setProperties() {
+  private void setProperties() {
     this.setAutoCreateRowSorter(true);
     this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     this.setGridColor(new java.awt.Color(0, 0, 0));
@@ -162,7 +160,7 @@ public class JPaginateTable extends JTable {
     maxPageIndex = rowCount / itemsPerPage + v;
     fieldTop.setText(String.format(PAG_FORMAT, maxPageIndex));
     paginateSorter.setRowFilter(
-        new RowFilter<TableModel, Integer>() {
+        new RowFilter<>() {
           @Override
           public boolean include(Entry<? extends TableModel, ? extends Integer> entry) {
             int ti = currentPageIndex - 1;
@@ -208,16 +206,10 @@ public class JPaginateTable extends JTable {
         BUTTON_HEIGHT);
   }
 
-  /**
-   * @return el valor de la paginacion de la tabla.
-   */
   public Integer getPaginationSize() {
     return tableScroll.getViewport().getViewRect().height;
   }
 
-  /**
-   * @return the label
-   */
   public JTextField getLabel() {
     return fieldTop;
   }
