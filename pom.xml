@@ -24,7 +24,6 @@
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>false</skip.integration.tests>
 
-		<commons.lang.version>3.17.0</commons.lang.version>
 		<constant-util.version>2.1.2</constant-util.version>
 		<exception-util.version>2.1.2</exception-util.version>
 	</properties>
@@ -39,12 +38,6 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons.lang.version}</version>
 		</dependency>
 
 		<dependency>
